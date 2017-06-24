@@ -1,0 +1,21 @@
+#header{
+    margin : 100px;
+    font-family: 'Itim', cursive;
+    color : orange;
+}
+
+i{
+    color : #ee0000;
+}
+
+.info{
+    margin : 30px;
+}
+
+td{
+    padding : 20px
+}
+
+.place-div{
+    font-size : 30px;
+}

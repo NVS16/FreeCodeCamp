@@ -1,0 +1,36 @@
+.input-group {
+    margin-left : 42%;
+}
+
+
+
+#title{
+    margin : 50px;
+    font-family: 'Berkshire Swash', cursive;
+    font-size : 30px;
+    color : red;
+}
+
+.header{
+   
+    font-family: 'Berkshire Swash', cursive; 
+}
+
+.header2{
+    margin : 50px;
+    font-family: 'Righteous', cursive;
+}
+
+table{
+    font-family: 'Righteous', cursive;
+}
+
+#footer{
+    font-family: 'Comfortaa', cursive;
+    margin : 20px;
+}
+
+
+
+/*font-family: 'Righteous', cursive;
+font-family: 'Comfortaa', cursive;*/
