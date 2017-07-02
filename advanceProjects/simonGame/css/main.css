@@ -1,6 +1,4 @@
-#0{
-    background : red;
-}
+
 
 table{
     width : 500px;
@@ -11,10 +9,11 @@ table{
 }
 
 #info{
-    font-family: 'Berkshire Swash', cursive;
+    
     font-size : 20px;
-    color : #0084b4;
+    color : red;
      height : 100px;   
+     font-family: 'Righteous', cursive;
 }
 
 
@@ -22,7 +21,7 @@ table{
 td{
     border : 1px solid #bbb;
     width : 250px;
-    height : 200px;
+    height : 100px;
     padding : 30px;
     color : #d34836;
     font-size : 30px;
@@ -33,23 +32,35 @@ td{
 #footer{
     font-family: 'Comfortaa', cursive;
     font-size : 16px;
+    height : 100px;
 }
 
 #header{
     font-family: 'Berkshire Swash', cursive;
     font-size : 50px;
     color : #0084b4;
+    height : 100px;
 }
 
-#reset{
-    margin : 20px;
-    font-size : 30px;
-    background : #fff;
-    font-size : 40px;
-}
+
 
 i{
     margin : 5px;
+}
+
+#start, #strict{
+    margin : 20px;
+    font-size : 20px;
+    font-family: 'Righteous', cursive; 
+    
+}
+
+#count{
+    background : black;
+    padding : 5px;
+    border-radius : 3px;
+    font-family: 'Righteous', cursive;
+    font-size : 23px; 
 }
 
 /*<i class = "fa fa-circle-o"></i>

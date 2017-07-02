@@ -18,18 +18,22 @@
         <div class = "container text-center">
             <table class = "text-center">
                 <tr>
-                    <td colspan = "4"><span id = "header"><button class = "btn" id = "reset">Simon Game</button></span></td>
+                    <td colspan = "4"><span id = "header">Simon Game</span></td>
                 </tr>
                 <tr>
-                    <td colspan = "4"><span id = "info">Info : </span><button class = "btn" id = "Submit">Submit</button></td>
+                    <td colspan = "4" id = "info">It's Simon's turn!</td>
                 </tr>
                 <tr>
-                    <td style = "background : green" id = "0">0</td>
-                    <td style = "background : red"  id = "1">1</td>
+                    <td style = "background : green" id = "0"></td>
+                    <td style = "background : red"  id = "1"></td>
                 </tr>
                 <tr>
-                    <td style = "background : yellow"  id = "2">2</td>
-                    <td style = "background : blue"  id = "3">3</td>
+                    <td style = "background : yellow"  id = "2"></td>
+                    <td style = "background : blue"  id = "3"></td>
+                </tr>
+                <tr><td colspan = "2"><span><button id = "start" class = "btn btn-success">Start</button></span><span id = "count">0</span>
+                <!--<span><button id = "strict" class = "btn btn-default">Strict</button></span>--></td>
+                
                 </tr>
                 <tr>
                     <td colspan = "3"><span id = "footer">Developed By - <a target = "_blank" 

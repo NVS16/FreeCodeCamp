@@ -1,9 +1,21 @@
 $(document).ready(function(){
-    var sequence = [1, 3, 1, 2, 2, 1, 0, 0, 2, 3, 1], playerArr = [];
-    var id = 0, myVar, myVar1, i = 1, l = 1, idClicked, t = 0, canCheck = false, canRun = true;
+    var sequence = [1, 3, 1, 0, 0, 2, 1, 3, 1, 1, 2, 0, 1, 1, 3, 2, 2, 2, 0, 0], playerArr = [];
+    var id = 0, myVar, myVar1, i = 1, l = 1, idClicked, t = 0, canClick = false, toStrict = true;
     var prevStyle = ["background : green", "background : red", "background : yellow", "background : blue"];
-    var isTurn = false;
+    var toStart = true;
     
+    function reset()
+    {
+        $("#count").html(0);
+        toStart = true;
+        playerArr = [];
+        id = 0;
+        l = 1;
+        canClick = false;
+        $("#start").html("Start");
+        $("#info").html("It's Simon's turn!");
+    }
+
 
     function playSound()
     {
@@ -21,8 +33,11 @@ $(document).ready(function(){
         {
             if(playerArr[k] !== sequence[k])
             {
-                alert("Simon Wins!" + playerArr);
+                canClick = false;
+                alert("Simon Won!!");
                 return;
+                
+                
             }
         }
         if(playerArr.length === l)
@@ -38,8 +53,8 @@ $(document).ready(function(){
                 $("#" + sequence[id - 1].toString()).attr("style", prevStyle[sequence[id - 1]]);
                 if(l < 12)
                 {
-                    alert("Its your turn!");
-                    
+                    $("#info").html("It's your turn!");
+                    canClick = true;
                 }
                 //alert(prevStyle[sequence[id - 1]]);
                  
@@ -84,15 +99,22 @@ function colorRepeat()
 
 function simonChange()
 {
-    $("#info").html("It's your turn!");
-        
-          
                 //alert("hello");
-                playerArr = [];
-                l++;
-                id = 0;
-                $("#info").html("It's Simon's turn!");
-                simonMove(l);
+                $("#count").html(l);    
+                if(l === 20)
+                 {   alert("You Won!!");canClick = false;}
+                else
+                {
+                    
+                    playerArr = [];
+                    l++;
+                    id = 0;
+                    $("#info").html("It's Simon's turn!");
+                    simonMove(l);
+                }
+                canClick = false;
+                
+                    
             
             
             
@@ -100,16 +122,52 @@ function simonChange()
 
 $("td").click(function(){
 
+    if(canClick)
+    {
     idClicked = parseInt($(this).attr("id"));
+    $("#" + idClicked.toString()).attr("style", "background : black");
+    setTimeout(function(){
+       $("#" + idClicked.toString()).attr("style", prevStyle[idClicked]); 
+    }, 500);
     playerArr.push(idClicked);
     playSound();
     //alert(playerArr);
     check();
-
+    }
 });
 
+$("#start").click(function(){
+    if(toStart)
+    {
+        $(this).html("Reset");
+        toStart = false;
+        simonMove();
+    }
+    else
+    {
+        reset();
+        
+    }
+});
 
-simonMove();
+/*$("#strict").click(function(){
+
+    if(toStrict)
+    {
+        $(this).addClass("btn-danger");
+        $(this).removeClass("btn-default");
+        toStrict = false;
+    }
+    else
+    {
+        $(this).addClass("btn-default");
+        $(this).removeClass("btn-danger");
+        toStrict = true;
+    }
+
+});*/
+
+
 
 
 });
