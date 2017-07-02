@@ -1,59 +1,115 @@
 $(document).ready(function(){
-    var sequence = [1, 3, 1, 2, 2, 1];
-    var id = 0, myVar, myVar1;
+    var sequence = [1, 3, 1, 2, 2, 1, 0, 0, 2, 3, 1], playerArr = [];
+    var id = 0, myVar, myVar1, i = 1, l = 1, idClicked, t = 0, canCheck = false, canRun = true;
     var prevStyle = ["background : green", "background : red", "background : yellow", "background : blue"];
-    var isRunning = true;
-    /*function simonMove()
-    {
-        //alert(id);
-        for(id = 0; id < 6; id++)
-        {setTimeout(function(){
-            //alert("red");
-            $("#" + sequence[id -1].toString()).attr("style", "background : black");
-        }, id * 1000);
+    var isTurn = false;
+    
 
-        setTimeout(function(){
-            //alert("red");
-            $("#" + sequence[id - 1].toString()).attr("style", prevStyle(sequence[id - 1]));
-        }, id * 1000 + 300);
-        }
+    function playSound()
+    {
+        //alert(x);
+        if(arguments.length === 0)
+        var aud = document.getElementById("a" + idClicked);
+        else
+        var aud = document.getElementById("a" + arguments[0]);
+        aud.play();
     }
 
-        simonMove();
-    */
-    if(isRunning)
+    function check()
     {
-        myVar = setInterval(function(){
-            if(id === 6)
+        for(var k = 0; k < playerArr.length; k++)
+        {
+            if(playerArr[k] !== sequence[k])
+            {
+                alert("Simon Wins!" + playerArr);
+                return;
+            }
+        }
+        if(playerArr.length === l)
+            simonChange();
+    }
+
+    function simonMove(limit)
+    {
+        setTimeout(function(){
+
+            if(id === limit)
             { 
                 $("#" + sequence[id - 1].toString()).attr("style", prevStyle[sequence[id - 1]]);
-                alert(prevStyle[sequence[id - 1]]);
-                closeInterval(myVar);
-                isRunning = false; 
+                if(l < 12)
+                {
+                    alert("Its your turn!");
+                    
+                }
+                //alert(prevStyle[sequence[id - 1]]);
+                 
             }
             else
-            {
-                if(id)
-                    $("#" + sequence[id - 1].toString()).attr("style", prevStyle[sequence[id - 1]]);
-                //alert(prevStyle);
-                if(sequence[id] === sequence[id - 1])
-                    {$("#" + sequence[id].toString()).attr("style", prevStyle[sequence[id]]);
-                    //alert(prevStyle[sequence[id]]);
-                    myVar1 = setInterval(function(){
-                            $("#" + sequence[id - 1].toString()).attr("style", "background : black");
-                            clearInterval(myVar1);
-                    }, 500 * id);}
+            {       
+                if(sequence[id] !== sequence[id - 1])  
+                {
+                    i = 1;
+                    if(id)
+                    $("#" + sequence[id - 1].toString()).attr("style", prevStyle[sequence[id - 1]]);       
+                $("#" + sequence[id].toString()).attr("style", "background : black");
+                playSound(id);
+                }
                 else
-                    $("#" + sequence[id].toString()).attr("style", "background : black");
+                {
+                    i = 2;
+                    colorRepeat();
+                }
                 id++;
+                simonMove(l);
             }
-        }, 2000);
-    }
-
+            
     
-
+        }, i * 1000);
     
+    }  
 
-    
+
+function colorRepeat()
+{
+    $("#" + sequence[id - 1].toString()).attr("style", prevStyle[sequence[id - 1]]);
+                    setTimeout(function(){
+                        $("#" + sequence[id - 2].toString()).attr("style", "background : black");
+                        playSound(id - 2);
+                    }, 1000);
+                    setTimeout(function(){
+                        $("#" + sequence[id - 2].toString()).attr("style", prevStyle[sequence[id - 2]]);
+                    }, 2000);
+}
+
+
+function simonChange()
+{
+    $("#info").html("It's your turn!");
+        
+          
+                //alert("hello");
+                playerArr = [];
+                l++;
+                id = 0;
+                $("#info").html("It's Simon's turn!");
+                simonMove(l);
+            
+            
+            
+}
+
+$("td").click(function(){
+
+    idClicked = parseInt($(this).attr("id"));
+    playerArr.push(idClicked);
+    playSound();
+    //alert(playerArr);
+    check();
+
+});
+
+
+simonMove();
+
 
 });
