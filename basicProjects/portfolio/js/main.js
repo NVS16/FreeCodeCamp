@@ -1,26 +1,10 @@
 $(document).ready(function(){
 
-
-    var tags = ["Web Developer", "Thinker", "Believer"], id = 0;
-
-    
-    setInterval(function(){
-
-
-        if(id === 3)
-            id = 0;
-
-
-        
-        
-         $("#tag").fadeOut("slow");
-         $("#tag").html(tags[id++]);
-        
-        
-       
-        
-
-    }, 2000);
-    
+    var prev = "#0";
+    $("li").click(function(){
+        $(this).addClass("active");
+        $(prev).removeClass("active");
+        prev = "#" + $(this).attr("id");
+    });
 
 });
