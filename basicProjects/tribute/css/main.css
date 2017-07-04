@@ -1,0 +1,28 @@
+body{
+  background : #ccc;
+}
+h1{
+  font-size : 50px;
+}
+h3{
+  margin-left : 10px;
+}
+body{
+  margin : 50px;
+}
+#main{
+  background : #fff;
+}
+.img-responsive{
+  margin : 50px 0 0 430px;
+}
+
+p{
+  font-size : 15px;
+  
+}
+blockquote{
+  background : #ddd;
+  text-indent : 50px;
+  font-size : 20px;
+}
